@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PokéInfo</string>
+    <string name="gbaheader">Enter name of the Pokemon</string>
+
+</resources>
