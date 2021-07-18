@@ -15,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 class InfoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInfoBinding
+    lateinit var nameList: List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,19 +38,42 @@ class InfoActivity : AppCompatActivity() {
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
             { response ->
-                val  spritesArray = response.getJSONObject("sprites")
-                val urlImage = spritesArray.getString("front_default")
+                val  spritesObject = response.getJSONObject("sprites")
+                val urlImage = spritesObject.getString("front_default")
+                val typeArray = response.getJSONArray("types")
+
+                Log.i("debug here","${typeArray.length()}")
+
+
+                var typeNames: String = "Type: "
+
+                for(ele in 0 until typeArray.length()){
+                    val temp = typeArray.getJSONObject(ele)
+                    val typepart = temp.getJSONObject("type").getString("name")
+                    typeNames += typepart
+                    typeNames += " "
+                }
+
+
+                val id = response.getString("id")
+                var wt = response.getString("weight").toDouble()
+                var ht = response.getString("height").toDouble()
+                ht /= 10
+                wt /= 10
+
+                binding.indexnum.text="#$id $name"
+                binding.types.text="$typeNames"
+                binding.height.text="Height: ${ht.toString()} m"
+                binding.weight.text="Weight: ${wt.toString()} Kg"
+
                 Glide.with(this).load(urlImage).into(binding.photopkmn)
-
-
             },
             {
-                showSnackBar("Connection Error", this)
+                showSnackBar("Invalid Pokemon name", this)
             })
 
         // Add the request to the RequestQueue.
         queue.add(jsonObjectRequest)
-
     }
 
     fun showSnackBar(message: String?, activity: Activity?) {
