@@ -1,4 +1,4 @@
-package com.example.pokeinfo
+package com.ayush.pokeinfo
 
 import android.app.Activity
 import android.os.Bundle
@@ -9,7 +9,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
-import com.example.pokeinfo.databinding.ActivityInfoBinding
+import com.ayush.pokeinfo.databinding.ActivityInfoBinding
 import com.google.android.material.snackbar.Snackbar
 
 class InfoActivity : AppCompatActivity() {

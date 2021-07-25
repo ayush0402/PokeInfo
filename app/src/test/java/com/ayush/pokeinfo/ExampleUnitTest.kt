@@ -1,4 +1,4 @@
-package com.example.pokeinfo
+package com.ayush.pokeinfo
 
 import org.junit.Test
 

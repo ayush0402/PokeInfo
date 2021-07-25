@@ -1,10 +1,10 @@
-package com.example.pokeinfo
+package com.ayush.pokeinfo
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.example.pokeinfo.databinding.ActivityMainBinding
+import com.ayush.pokeinfo.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
